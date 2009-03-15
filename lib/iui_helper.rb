@@ -84,7 +84,7 @@ module IuiHelper
   end
   
   def fieldset(&block)
-    concat(content_tag(:fieldset, capture(&block)), block.binding)
+    concat(content_tag(:fieldset, capture(&block)))
   end
   
   def row(label_text="", &block)
@@ -92,7 +92,7 @@ module IuiHelper
     block = if block_given? then capture(&block) else "" end
     div = content_tag(:div, label + block, :class => "row")
     if block_given?
-      concat(div, block.binding)
+      concat(div)
     else
       div
     end
@@ -101,17 +101,17 @@ module IuiHelper
   def row_label(&block)
     label = content_tag(:label, capture(&block))
     div = content_tag(:div, label, :class => "row")
-    concat(div, block.binding)
+    concat(div)
   end
   
   def panel(&block)
     div = content_tag(:div, capture(&block), :class => "panel")
-    concat(div, block.binding)
+    concat(div)
   end
   
   def dialog(&block)
     div = content_tag(:div, capture(&block), :class => "dialog")
-    concat(div, block.binding)
+    concat(div)
   end
   
   def servicelink_tel(telno)
