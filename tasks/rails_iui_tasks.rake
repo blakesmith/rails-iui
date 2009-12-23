@@ -1,7 +1,7 @@
 require 'open-uri'
 
 namespace :iui do
-  version = "0.13"
+  version = "0.31"
   
   task :download => :environment do
     unless File.exist?("#{RAILS_ROOT}/public/javascripts/iui.js")
