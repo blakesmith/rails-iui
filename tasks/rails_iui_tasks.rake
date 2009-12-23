@@ -38,13 +38,17 @@ namespace :iui do
   end
   
   task :change_root => :environment do
-    text = ""
-    File.open("#{RAILS_ROOT}/public/stylesheets/iui.css") do |f|
-      text = f.read
-      text.gsub!("url(", "url(/images/")
-    end
-    File.open("#{RAILS_ROOT}/public/stylesheets/iui.css", 'w') do |f|
-      f << text
+    Dir.chdir("#{RAILS_ROOT}/public/stylesheets") do
+      Dir.glob("iui*.css").each do |css_filename|
+        text = ""
+        File.open("#{RAILS_ROOT}/public/stylesheets/#{css_filename}") do |f|
+          text = f.read
+          text.gsub!("url(", "url(/images/")
+        end
+        File.open("#{RAILS_ROOT}/public/stylesheets/#{css_filename}", 'w') do |f|
+          f << text
+        end
+      end
     end
   end
   
