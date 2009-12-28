@@ -38,7 +38,7 @@ module IuiHelper
   
   def iui_toolbar(initial_caption, search_url = nil)
     back_button = button_link_to("", "#", :id => "backButton")
-    header = content_tag(:h1, initial_caption, :id => "header_text")
+    header = content_tag(:h1, initial_caption, :id => "pageTitle")
     search_link = if search_url 
                   then button_link_to("Search", search_url, :id => "searchButton",
                       :target => "_self") 
